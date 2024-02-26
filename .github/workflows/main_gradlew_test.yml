@@ -46,7 +46,7 @@ jobs:
 
       - name: Run tests
         run: |
-          ./gradlew test --tests "dev.mobile.medicalink.api.rpps"
+          ./gradlew testRelease --tests "dev.mobile.medicalink.api.rpps.*"
 
   tests-db:
     runs-on: ubuntu-latest
@@ -70,4 +70,4 @@ jobs:
         run: chmod +x ./gradlew
       - name: Run tests
         run: |
-          ./gradlew test --tests "dev.mobile.medicalink.db.local"
+          ./gradlew testRelease --tests "dev.mobile.medicalink.db.local.*"
