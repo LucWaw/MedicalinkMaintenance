@@ -533,17 +533,20 @@ class AjoutManuelRecapitulatif : Fragment() {
 
 
     /**
-     * Récupérer le nom de la substance1 dans cis compo a partir de la clé primaire cis
-     * La meme chose pour tous les medoc éxistant
-     * liste si substance = a la substance1 et le nom du traitement correspondant
+     * Récupérer le nom de la substance1 dans cis compo a partir de la clé primaire cis.
+     * La meme chose pour tous les medoc existant.
+     * Puis comparer les noms de substances.
+     * Si elles sont les memes alors on ajoute le nom du medoc dans une liste.
      *
      * @param codeCIS le code cis du traitement a add
      * @param substanceDatabaseInterface la base de donnée des substances
      * @param medocDatabaseInterface la base de donnée des traitements
      * @param userDatabaseInterface la base de donnée des utilisateurs
+     * @param interactionDatabaseInterface la base de donnée des interactions
+     * @param callback la fonction a appeler après la fin de la recherche
      * @see String.removeAccents pour enlever les accents
-     * @return List<String> liste des nom de traitements contenant la meme substance
-     * @return String nom de la substance
+     * @see findSubstanceName pour trouver le nom de la substance
+     * @see addToIncompatible pour ajouter les medicaments incompatibles
      */
     private fun checkIfSubstanceDuplicateOrInteraction(
         codeCIS: Int,
