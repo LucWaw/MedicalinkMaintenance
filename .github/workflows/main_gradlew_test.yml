@@ -3,7 +3,7 @@ name: Run Tests
 on:
   push:
     branches:
-      - main
+      - actions
 
 jobs:
   build:
@@ -22,11 +22,24 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
+
+  test-api:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Update API_URL from Secrets
         env:
           API_RPPS_URL: ${{ secrets.API_RPPS_URL }}
         run: echo "apiRppsUrl=${{ env.API_RPPS_URL }}" > ./local.properties
 
+      - name: Run tests
+        run: |
+          ./gradlew test
+
+  test-db:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Run tests
         run: |
           ./gradlew test
