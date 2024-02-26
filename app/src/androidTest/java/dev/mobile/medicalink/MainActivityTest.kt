@@ -1,9 +1,10 @@
 package dev.mobile.medicalink
 
-
 import android.Manifest
 import android.widget.DatePicker
+import androidx.room.Room
 import androidx.test.core.app.ActivityScenario
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
@@ -17,6 +18,7 @@ import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.GrantPermissionRule
+import dev.mobile.medicalink.db.local.AppDatabase
 import org.hamcrest.Matchers
 import org.junit.After
 import org.junit.Before
@@ -28,7 +30,6 @@ import java.util.Locale
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
 
-
     @JvmField
     @Rule
     val permissionRule: GrantPermissionRule =
@@ -36,7 +37,14 @@ class MainActivityTest {
 
     @Before
     fun setUp() {
+        val db = Room.inMemoryDatabaseBuilder(
+            ApplicationProvider.getApplicationContext(),
+            AppDatabase::class.java
+        ).allowMainThreadQueries().build()
+        // On réinitialise la base de données à chaque test
 
+        db.clearAllTables()
+        
         // On initialise Intents avant chaque test
         Intents.init()
         // On lance notre application via sa première activité
@@ -50,7 +58,7 @@ class MainActivityTest {
     }
 
     @Test
-    fun testClickOnButtunCreateProfile() {
+    fun testClickOnButtonCreateProfile() {
         // Simulation du clic sur le bouton de création de profiles (oui oui, son id est bien button_connexion, merci Pacôme)
         onView(withId(R.id.button_connexion)).perform(click())
         // Vérification que l'activité de création de profiles est lancée
@@ -58,7 +66,7 @@ class MainActivityTest {
     }
 
     @Test
-    fun testTexteBienvue() {
+    fun testTexteBienvenue() {
         // Vérification que le texte de bienvenue est bien présent
         //en fonction de la langue du téléphone, le texte peut être différent
 

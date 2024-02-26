@@ -16,6 +16,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import dev.mobile.medicalink.R
+import dev.mobile.medicalink.R.string.Telephone_non_renseigne
 import dev.mobile.medicalink.api.rpps.ApiRppsClient
 import dev.mobile.medicalink.api.rpps.ApiRppsService
 import dev.mobile.medicalink.db.local.AppDatabase
@@ -91,7 +92,7 @@ class InfosContactFragment : Fragment() {
             }
         }.start()
 
-        btnTelephone.setOnClickListener(View.OnClickListener {
+        btnTelephone.setOnClickListener({
             val number = textTelephone.text.toString()
             val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$number"))
             startActivity(intent)
@@ -123,29 +124,35 @@ class InfosContactFragment : Fragment() {
         }
         textSpecialite.text = contact.specialty ?: "Spécialité non renseigné"
         if (contact.phoneNumber == null) {
-            textTelephone.text = "Téléphone non renseigné"
+            textTelephone.text = Telephone_non_renseigne.toString()
             btnTelephone.visibility = View.INVISIBLE
         } else {
             textTelephone.text = contact.phoneNumber
             btnTelephone.visibility = View.VISIBLE
         }
 
-        lifecycleScope.launch {
-            val res = apiRpps.getEmail(contact.rpps)
-            if (res.isSuccessful) {
-                contact.email = res.body()?.getOrNull(0)
-                if (contact.email == null) {
-                    btnEmail.visibility = View.INVISIBLE
-                    textEmail.text = "Email non renseigné"
+        if (contact.email == null) {
+            lifecycleScope.launch {
+                val res = apiRpps.getEmail(contact.rpps)
+                if (res.isSuccessful) {
+                    contact.email = res.body()?.getOrNull(0)
+                    if (contact.email == null) {
+                        btnEmail.visibility = View.INVISIBLE
+                        textEmail.text = "Email non renseigné"
+                    } else {
+                        textEmail.text = contact.email
+                        btnEmail.visibility = View.VISIBLE
+                    }
                 } else {
-                    textEmail.text = contact.email
-                    btnEmail.visibility = View.VISIBLE
+                    textEmail.text = "Email non renseigné"
+                    btnEmail.visibility = View.INVISIBLE
                 }
-            } else {
-                textEmail.text = "Email non renseigné"
-                btnEmail.visibility = View.INVISIBLE
             }
+        } else {
+            textEmail.text = contact.email
+            btnEmail.visibility = View.VISIBLE
         }
+
 
         if (contact.address == null) {
             textAdresse.text = "Adresse non renseigné"

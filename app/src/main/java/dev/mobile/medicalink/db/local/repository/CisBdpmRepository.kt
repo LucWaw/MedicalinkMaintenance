@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteException
 import android.util.Log
 import dev.mobile.medicalink.db.local.dao.CisBdpmDao
 import dev.mobile.medicalink.db.local.entity.CisBdpm
+import dev.mobile.medicalink.utils.CsvCommonFonctionnality
 
 class CisBdpmRepository(private val CISbdpmDao: CisBdpmDao) {
     val commonFonctionnality = CsvCommonFonctionnality()
@@ -13,6 +14,14 @@ class CisBdpmRepository(private val CISbdpmDao: CisBdpmDao) {
     fun getAllCisBdpm(): List<CisBdpm> {
         return try {
             CISbdpmDao.getAll()
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
+
+    fun search100(searchQuery: String): List<CisBdpm> {
+        return try {
+            CISbdpmDao.search100(searchQuery)
         } catch (e: Exception) {
             emptyList()
         }
