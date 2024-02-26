@@ -61,6 +61,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Update API_URL from Secrets
+        env:
+          API_RPPS_URL: ${{ secrets.API_RPPS_URL }}
+        run: touch local.properties
+
       - name: Make gradlew executable
         run: chmod +x ./gradlew
       - name: Run tests
