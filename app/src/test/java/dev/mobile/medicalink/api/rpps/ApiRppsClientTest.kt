@@ -1,16 +1,17 @@
 package dev.mobile.medicalink.api.rpps
 
-import junit.framework.TestCase.assertEquals
-import junit.framework.TestCase.assertNotNull
 import kotlinx.coroutines.runBlocking
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+
 
 class ApiRppsClientTest {
 
     lateinit var apiRpps: ApiRppsService
 
-    @Before
+    @BeforeEach
     fun init() {
         apiRpps = ApiRppsClient().apiService
     }

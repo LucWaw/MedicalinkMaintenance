@@ -2,17 +2,14 @@ package dev.mobile.medicalink.db.local.repository
 
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import dev.mobile.medicalink.db.local.AppDatabase
 import dev.mobile.medicalink.db.local.entity.Medoc
 import dev.mobile.medicalink.db.local.entity.User
-import org.junit.After
-import org.junit.Assert.*
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
-@RunWith(AndroidJUnit4::class)
+
 //@Config(sdk = [29])
 //@SmallTest
 class MedocRepositoryTest {
@@ -55,7 +52,7 @@ class MedocRepositoryTest {
         "dateDbtTraitement2"
     )
 
-    @Before
+    @BeforeEach
     fun setupDatabase() {
         db = Room.inMemoryDatabaseBuilder(
             ApplicationProvider.getApplicationContext(),
@@ -72,7 +69,7 @@ class MedocRepositoryTest {
         userRepository.insertUser(userOfDefaultMedoc2)
     }
 
-    @After
+    @AfterEach
     fun closeDatabase() {
         db.clearAllTables()
         db.close()

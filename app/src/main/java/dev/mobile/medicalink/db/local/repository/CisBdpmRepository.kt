@@ -7,20 +7,20 @@ import android.util.Log
 import dev.mobile.medicalink.db.local.dao.CisBdpmDao
 import dev.mobile.medicalink.db.local.entity.CisBdpm
 
-class CisBdpmRepository(private val CISbdpmDao: CisBdpmDao) {
-    val commonFonctionnality = CsvCommonFonctionnality()
+class CisBdpmRepository(private val cISbdpmDao: CisBdpmDao) {
+    private val commonFonctionnality = CsvCommonFonctionnality()
 
     fun getAllCisBdpm(): List<CisBdpm> {
         return try {
-            CISbdpmDao.getAll()
+            cISbdpmDao.getAll()
         } catch (e: Exception) {
             emptyList()
         }
     }
 
-    fun getOneCisBdpmById(CodeCIS: Int): List<CisBdpm> {
+    fun getOneCisBdpmById(codeCIS: Int): List<CisBdpm> {
         return try {
-            CISbdpmDao.getById(CodeCIS)
+            cISbdpmDao.getById(codeCIS)
         } catch (e: Exception) {
             emptyList()
         }
@@ -28,7 +28,7 @@ class CisBdpmRepository(private val CISbdpmDao: CisBdpmDao) {
 
     fun insertCisBdpm(cisBdpm: CisBdpm): Pair<Boolean, String> {
         return try {
-            CISbdpmDao.insertAll(cisBdpm)
+            cISbdpmDao.insertAll(cisBdpm)
             Pair(true, "Success")
         } catch (e: SQLiteConstraintException) {
             Pair(false, "CisBdpm already exists")
@@ -48,7 +48,7 @@ class CisBdpmRepository(private val CISbdpmDao: CisBdpmDao) {
         //val csvContent = commonFonctionnality.readCsvFromAssets(context, "CIS_bdpm_new.csv")
         val cisBdpmList = parseCsv(csvContent)
         try {
-            CISbdpmDao.insertAll(*cisBdpmList.toTypedArray())
+            cISbdpmDao.insertAll(*cisBdpmList.toTypedArray())
         } catch (e: SQLiteConstraintException) {
             Log.e("CisBdpmRepository", "CIS_bdpm already exists")
         } catch (e: SQLiteException) {
@@ -73,7 +73,7 @@ class CisBdpmRepository(private val CISbdpmDao: CisBdpmDao) {
             val values = commonFonctionnality.parseCsvLine(line)
             if (values.size == 12) {
                 val cisBdpm = CisBdpm(
-                    CodeCIS = values[0].toInt(),
+                    codeCIS = values[0].toInt(),
                     denomination = values[1],
                     formePharmaceutique = values[2],
                     voiesAdministration = values[3],
@@ -97,7 +97,7 @@ class CisBdpmRepository(private val CISbdpmDao: CisBdpmDao) {
 
     fun deleteCisBdpm(cisBdpm: CisBdpm): Pair<Boolean, String> {
         return try {
-            CISbdpmDao.delete(cisBdpm)
+            cISbdpmDao.delete(cisBdpm)
             Pair(true, "Success")
         } catch (e: SQLiteConstraintException) {
             Pair(false, "CisBdpm doesn't exist")
@@ -110,7 +110,7 @@ class CisBdpmRepository(private val CISbdpmDao: CisBdpmDao) {
 
     fun updateCisBdpm(cisBdpm: CisBdpm): Pair<Boolean, String> {
         return try {
-            CISbdpmDao.update(cisBdpm)
+            cISbdpmDao.update(cisBdpm)
             Pair(true, "Success")
         } catch (e: SQLiteConstraintException) {
             Pair(false, "CisBdpm doesn't exist")

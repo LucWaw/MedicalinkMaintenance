@@ -9,17 +9,17 @@ interface CisSideInfosDao {
     @Query("SELECT * FROM CisSideInfos")
     fun getAll(): List<CisSideInfos>
 
-    @Query("SELECT * FROM CisSideInfos WHERE CodeCIS IN (:CodeCIS)")
-    fun getById(CodeCIS: Int): List<CisSideInfos>
+    @Query("SELECT * FROM CisSideInfos WHERE codeCIS IN (:codeCIS)")
+    fun getById(codeCIS: Int): List<CisSideInfos>
 
     @Insert
-    fun insertAll(vararg CisSideInfosDaos: CisSideInfos)
+    fun insertAll(vararg cisSideInfosDaos: CisSideInfos)
 
     @Delete
-    fun delete(CisSideInfosDao: CisSideInfos)
+    fun delete(cisSideInfosDao: CisSideInfos)
 
     @Update
-    fun update(CisSideInfosDao: CisSideInfos)
+    fun update(cisSideInfosDao: CisSideInfos)
 
     @Query("DELETE FROM CisSideInfos")
     fun deleteAll()

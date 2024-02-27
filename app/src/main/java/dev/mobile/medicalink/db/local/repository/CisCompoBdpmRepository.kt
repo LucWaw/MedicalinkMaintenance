@@ -8,7 +8,7 @@ import dev.mobile.medicalink.db.local.dao.CisCompoBdpmDao
 import dev.mobile.medicalink.db.local.entity.CisCompoBdpm
 
 class CisCompoBdpmRepository(private val cisCompoBdpmDao: CisCompoBdpmDao) {
-    val commonFonctionnality = CsvCommonFonctionnality()
+    private val commonFonctionnality = CsvCommonFonctionnality()
 
     fun getAllCisCompoBdpm(): List<CisCompoBdpm> {
         return try {
@@ -18,9 +18,9 @@ class CisCompoBdpmRepository(private val cisCompoBdpmDao: CisCompoBdpmDao) {
         }
     }
 
-    fun getOneCisCompoBdpmById(CodeCIS: Int): List<CisCompoBdpm> {
+    fun getOneCisCompoBdpmById(codeCIS: Int): List<CisCompoBdpm> {
         return try {
-            cisCompoBdpmDao.getById(CodeCIS)
+            cisCompoBdpmDao.getById(codeCIS)
         } catch (e: Exception) {
             emptyList()
         }
@@ -68,7 +68,7 @@ class CisCompoBdpmRepository(private val cisCompoBdpmDao: CisCompoBdpmDao) {
      * @param csvContent CSV file content
      * @return Pair<Boolean, String> : Boolean is true if success, String is error message if error
      */
-    fun parseCsv(csvContent: String): List<CisCompoBdpm> {
+    private fun parseCsv(csvContent: String): List<CisCompoBdpm> {
         val cisCompoBdpmList = mutableListOf<CisCompoBdpm>()
         val lines = csvContent.split("\n")
         //On ne prend ni la première ligne (header) ni la dernière ligne (vide)
@@ -78,7 +78,7 @@ class CisCompoBdpmRepository(private val cisCompoBdpmDao: CisCompoBdpmDao) {
             if (values.size == 8) {
 
                 val cisCompoBdpm = CisCompoBdpm(
-                    CodeCIS = values[0].toInt(),
+                    codeCIS = values[0].toInt(),
                     designationForme = values[1],
                     codeSubstance = values[2],
                     denomination = values[3],

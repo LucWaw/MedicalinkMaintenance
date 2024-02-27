@@ -12,17 +12,17 @@ interface CisCompoBdpmDao {
     @Query("SELECT * FROM CisCompoBdpm")
     fun getAll(): List<CisCompoBdpm>
 
-    @Query("SELECT * FROM CisCompoBdpm WHERE CodeCIS IN (:CodeCIS)")
-    fun getById(CodeCIS: Int): List<CisCompoBdpm>
+    @Query("SELECT * FROM CisCompoBdpm WHERE codeCIS IN (:codeCIS)")
+    fun getById(codeCIS: Int): List<CisCompoBdpm>
 
     @Insert
-    fun insertAll(vararg CisCompoBdpmDaos: CisCompoBdpm)
+    fun insertAll(vararg cisCompoBdpmDaos: CisCompoBdpm)
 
     @Delete
-    fun delete(CisCompoBdpmDao: CisCompoBdpm)
+    fun delete(cisCompoBdpmDao: CisCompoBdpm)
 
     @Update
-    fun update(CisCompoBdpmDao: CisCompoBdpm)
+    fun update(cisCompoBdpmDao: CisCompoBdpm)
 
     @Query("DELETE FROM CisCompoBdpm")
     fun deleteAll()

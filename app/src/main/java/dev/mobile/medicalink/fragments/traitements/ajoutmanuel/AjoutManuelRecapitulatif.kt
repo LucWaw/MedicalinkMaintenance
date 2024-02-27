@@ -588,12 +588,12 @@ class AjoutManuelRecapitulatif : Fragment() {
             Log.d("InteractionSubstance", listSubstanceIncompatible.toString())
 
             for (medoc in listeMedoc) {
-                if (medoc.CodeCIS == null) {
+                if (medoc.codeCIS == null) {
                     continue
                 }
 
                 val substance =
-                    findSubstanceName(medoc.CodeCIS, substanceDatabaseInterface) ?: continue
+                    findSubstanceName(medoc.codeCIS, substanceDatabaseInterface) ?: continue
 
                 //remplir les duplications
                 if (substance == substanceAdd) listDuplicate.add(medoc.nom)

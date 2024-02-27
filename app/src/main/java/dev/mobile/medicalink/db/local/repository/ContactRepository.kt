@@ -5,11 +5,11 @@ import android.database.sqlite.SQLiteException
 import dev.mobile.medicalink.db.local.dao.ContactDao
 import dev.mobile.medicalink.db.local.entity.Contact
 
-class ContactRepository(private val ContactDao: ContactDao) {
+class ContactRepository(private val contactDao: ContactDao) {
 
     fun getAllContact(): List<Contact> {
         return try {
-            ContactDao.getAll()
+            contactDao.getAll()
         } catch (e: Exception) {
             emptyList()
         }
@@ -17,7 +17,7 @@ class ContactRepository(private val ContactDao: ContactDao) {
 
     fun getOneContactById(uuid: String, rpps: Long): Contact? {
         return try {
-            val c = ContactDao.getByIdAndUuid(rpps, uuid)
+            val c = contactDao.getByIdAndUuid(rpps, uuid)
             c
         } catch (e: Exception) {
             null
@@ -26,15 +26,15 @@ class ContactRepository(private val ContactDao: ContactDao) {
 
     fun getContactsByUuid(uuid: String): List<Contact> {
         return try {
-            ContactDao.getByUuid(uuid)
+            contactDao.getByUuid(uuid)
         } catch (e: Exception) {
             emptyList()
         }
     }
 
-    fun insertContact(Contact: Contact): Pair<Boolean, String> {
+    fun insertContact(contact: Contact): Pair<Boolean, String> {
         return try {
-            ContactDao.insertAll(Contact)
+            contactDao.insertAll(contact)
             Pair(true, "Success")
         } catch (e: SQLiteConstraintException) {
             Pair(false, "Contact already exists")
@@ -45,9 +45,9 @@ class ContactRepository(private val ContactDao: ContactDao) {
         }
     }
 
-    fun deleteContact(Contact: Contact): Pair<Boolean, String> {
+    fun deleteContact(contact: Contact): Pair<Boolean, String> {
         return try {
-            ContactDao.delete(Contact)
+            contactDao.delete(contact)
             Pair(true, "Success")
         } catch (e: SQLiteConstraintException) {
             Pair(false, "Contact doesn't exist")
@@ -58,9 +58,9 @@ class ContactRepository(private val ContactDao: ContactDao) {
         }
     }
 
-    fun updateContact(Contact: Contact): Pair<Boolean, String> {
+    fun updateContact(contact: Contact): Pair<Boolean, String> {
         return try {
-            ContactDao.update(Contact)
+            contactDao.update(contact)
             Pair(true, "Success")
         } catch (e: SQLiteConstraintException) {
             Pair(false, "Contact doesn't exist")

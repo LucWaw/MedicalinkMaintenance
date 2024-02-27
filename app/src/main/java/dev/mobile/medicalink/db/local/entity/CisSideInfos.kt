@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 class CisSideInfos(
-    @PrimaryKey val CodeCIS: Int,
+    @PrimaryKey val codeCIS: Int,
     var contreIndications: String,
     var allergies: String,
 )

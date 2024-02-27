@@ -87,7 +87,7 @@ class InfoMedicamentFragment : Fragment() {
             activity?.runOnUiThread {
                 nomMedocView.text = cisBdpm.denomination.trim()
 
-                codeCisView.text = getString(R.string.code_cis, cisBdpm.CodeCIS.toString().trim())
+                codeCisView.text = getString(R.string.code_cis, cisBdpm.codeCIS.toString().trim())
 
                 textSubstanceActiveDosageView.text = getString(R.string.label_substance_active)
                 substanceActiveDosageView.text = getString(
@@ -130,7 +130,7 @@ class InfoMedicamentFragment : Fragment() {
                 val clickableSpan = object : ClickableSpan() {
                     override fun onClick(view: View) {
                         val url =
-                            "https://base-donnees-publique.medicaments.gouv.fr/extrait.php?specid=${cisBdpm.CodeCIS}"
+                            "https://base-donnees-publique.medicaments.gouv.fr/extrait.php?specid=${cisBdpm.codeCIS}"
                         val intent = Intent(Intent.ACTION_VIEW)
                         intent.data = Uri.parse(url)
                         startActivity(intent)

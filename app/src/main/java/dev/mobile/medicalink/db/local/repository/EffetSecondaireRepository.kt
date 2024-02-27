@@ -5,11 +5,11 @@ import android.database.sqlite.SQLiteException
 import dev.mobile.medicalink.db.local.dao.EffetSecondaireDao
 import dev.mobile.medicalink.db.local.entity.EffetSecondaire
 
-class EffetSecondaireRepository(private val EffetSecondaireDao: EffetSecondaireDao) {
+class EffetSecondaireRepository(private val effetSecondaireDao: EffetSecondaireDao) {
 
     fun getAllEffetSecondaire(): List<EffetSecondaire> {
         return try {
-            EffetSecondaireDao.getAll()
+            effetSecondaireDao.getAll()
         } catch (e: Exception) {
             emptyList()
         }
@@ -17,15 +17,15 @@ class EffetSecondaireRepository(private val EffetSecondaireDao: EffetSecondaireD
 
     fun getEffetSecondairesByUuid(uuid: String): List<EffetSecondaire> {
         return try {
-            EffetSecondaireDao.getByuuidUser(uuid)
+            effetSecondaireDao.getByuuidUser(uuid)
         } catch (e: Exception) {
             emptyList()
         }
     }
 
-    fun insertEffetSecondaire(EffetSecondaire: EffetSecondaire): Pair<Boolean, String> {
+    fun insertEffetSecondaire(effetSecondaire: EffetSecondaire): Pair<Boolean, String> {
         return try {
-            EffetSecondaireDao.insertAll(EffetSecondaire)
+            effetSecondaireDao.insertAll(effetSecondaire)
             Pair(true, "Success")
         } catch (e: SQLiteConstraintException) {
             Pair(false, "EffetSecondaire already exists")
@@ -36,9 +36,9 @@ class EffetSecondaireRepository(private val EffetSecondaireDao: EffetSecondaireD
         }
     }
 
-    fun deleteEffetSecondaire(EffetSecondaire: EffetSecondaire): Pair<Boolean, String> {
+    fun deleteEffetSecondaire(effetSecondaire: EffetSecondaire): Pair<Boolean, String> {
         return try {
-            EffetSecondaireDao.delete(EffetSecondaire)
+            effetSecondaireDao.delete(effetSecondaire)
             Pair(true, "Success")
         } catch (e: SQLiteConstraintException) {
             Pair(false, "EffetSecondaire doesn't exist")
@@ -49,9 +49,9 @@ class EffetSecondaireRepository(private val EffetSecondaireDao: EffetSecondaireD
         }
     }
 
-    fun updateEffetSecondaire(EffetSecondaire: EffetSecondaire): Pair<Boolean, String> {
+    fun updateEffetSecondaire(effetSecondaire: EffetSecondaire): Pair<Boolean, String> {
         return try {
-            EffetSecondaireDao.update(EffetSecondaire)
+            effetSecondaireDao.update(effetSecondaire)
             Pair(true, "Success")
         } catch (e: SQLiteConstraintException) {
             Pair(false, "EffetSecondaire doesn't exist")

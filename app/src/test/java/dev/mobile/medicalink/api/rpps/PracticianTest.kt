@@ -1,16 +1,17 @@
 package dev.mobile.medicalink.api.rpps
 
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotEquals
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotEquals
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+
 
 class PracticianTest {
 
     lateinit var p1: Practician
     lateinit var p2: Practician
 
-    @Before
+    @BeforeEach
     fun init() {
         p1 = dummyPractician1()
         p2 = dummyPractician2()

@@ -285,7 +285,7 @@ class AjoutManuelSearchFragment : Fragment() {
      */
     private fun updateSearchBar(query: CisBdpm, traitement: Traitement) {
         addManuallySearchBar.setText(query.denomination)
-        traitement.CodeCIS = query.CodeCIS
+        traitement.CodeCIS = query.codeCIS
     }
 
 }

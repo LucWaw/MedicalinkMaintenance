@@ -17,13 +17,13 @@ interface EffetSecondaireDao {
     fun getByuuidUser(uuidUser: String): List<EffetSecondaire>
 
     @Insert
-    fun insertAll(vararg EffetSecondaireDaos: EffetSecondaire)
+    fun insertAll(vararg effetSecondaireDaos: EffetSecondaire)
 
     @Delete
-    fun delete(EffetSecondaireDao: EffetSecondaire)
+    fun delete(effetSecondaireDao: EffetSecondaire)
 
     @Update
-    fun update(EffetSecondaireDao: EffetSecondaire)
+    fun update(effetSecondaireDao: EffetSecondaire)
 
     @Query("DELETE FROM EffetSecondaire")
     fun deleteAll()

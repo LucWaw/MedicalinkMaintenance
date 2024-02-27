@@ -17,6 +17,6 @@ interface InteractionDao {
     fun getBySubstance(substance: String): List<Interaction>
 
     @Insert
-    fun insertAll(vararg InteractionDaos: Interaction)
+    fun insertAll(vararg interactionDaos: Interaction)
 
 }

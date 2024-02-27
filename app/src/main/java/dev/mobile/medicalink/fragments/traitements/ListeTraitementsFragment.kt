@@ -208,7 +208,7 @@ class ListeTraitementsFragment : Fragment() {
                 }
 
                 val traitement = Traitement(
-                    medoc.CodeCIS,
+                    medoc.codeCIS,
                     medoc.nom,
                     medoc.dosageNB.toInt(),
                     medoc.dosageUnite,

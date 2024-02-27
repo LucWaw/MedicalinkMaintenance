@@ -1,6 +1,7 @@
 package dev.mobile.medicalink
 
-
+import androidx.test.rule.GrantPermissionRule
+import org.junit.Rule
 import android.Manifest
 import android.widget.DatePicker
 import androidx.test.core.app.ActivityScenario
@@ -14,27 +15,23 @@ import androidx.test.espresso.contrib.PickerActions
 import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
-import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.rule.GrantPermissionRule
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withClassName
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import org.hamcrest.Matchers
-import org.junit.After
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import java.util.Locale
 
-@RunWith(AndroidJUnit4::class)
 class MainActivityTest {
 
-
-    @JvmField
-    @Rule
+    @get:Rule
     val permissionRule: GrantPermissionRule =
         GrantPermissionRule.grant(Manifest.permission.POST_NOTIFICATIONS)
 
-    @Before
+    @BeforeEach
     fun setUp() {
 
         // On initialise Intents avant chaque test
@@ -43,7 +40,7 @@ class MainActivityTest {
         ActivityScenario.launch(MainActivity::class.java)
     }
 
-    @After
+    @AfterEach
     fun tearDown() {
         // On libère Intents après chaque test
         Intents.release()

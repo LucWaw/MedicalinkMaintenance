@@ -2,16 +2,13 @@ package dev.mobile.medicalink.db.local.repository
 
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import dev.mobile.medicalink.db.local.AppDatabase
 import dev.mobile.medicalink.db.local.entity.PriseValidee
-import org.junit.After
-import org.junit.Assert.*
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
-@RunWith(AndroidJUnit4::class)
+
 //@Config(sdk = [29])
 //@SmallTest
 class PriseValideeRepositoryTest {
@@ -20,7 +17,7 @@ class PriseValideeRepositoryTest {
     private val defaultPriseValidee = PriseValidee("1", "2021-01-01", "1", "statut")
     private val defaultPriseValidee2 = PriseValidee("2", "2021-02-02", "2", "statut2")
 
-    @Before
+    @BeforeEach
     fun setupDatabase() {
         db = Room.inMemoryDatabaseBuilder(
             ApplicationProvider.getApplicationContext(),
@@ -30,7 +27,7 @@ class PriseValideeRepositoryTest {
         priseValideeRepository = PriseValideeRepository(db.priseValideeDao())
     }
 
-    @After
+    @AfterEach
     fun closeDatabase() {
         db.clearAllTables()
         db.close()

@@ -7,20 +7,20 @@ import android.util.Log
 import dev.mobile.medicalink.db.local.dao.CisSideInfosDao
 import dev.mobile.medicalink.db.local.entity.CisSideInfos
 
-class CisSideInfosRepository(private val CisSideInfosDao: CisSideInfosDao) {
-    val commonFonctionnality = CsvCommonFonctionnality()
+class CisSideInfosRepository(private val cisSideInfosDao: CisSideInfosDao) {
+    private val commonFonctionnality = CsvCommonFonctionnality()
 
     fun getAllCisSideInfos(): List<CisSideInfos> {
         return try {
-            CisSideInfosDao.getAll()
+            cisSideInfosDao.getAll()
         } catch (e: Exception) {
             emptyList()
         }
     }
 
-    fun getOneCisSideInfosById(CodeCIS: Int): List<CisSideInfos> {
+    fun getOneCisSideInfosById(codeCIS: Int): List<CisSideInfos> {
         return try {
-            CisSideInfosDao.getById(CodeCIS)
+            cisSideInfosDao.getById(codeCIS)
         } catch (e: Exception) {
             emptyList()
         }
@@ -28,7 +28,7 @@ class CisSideInfosRepository(private val CisSideInfosDao: CisSideInfosDao) {
 
     fun insertCisSideInfos(cisSideInfos: CisSideInfos): Pair<Boolean, String> {
         return try {
-            CisSideInfosDao.insertAll(cisSideInfos)
+            cisSideInfosDao.insertAll(cisSideInfos)
             Pair(true, "Success")
         } catch (e: SQLiteConstraintException) {
             Pair(false, "CisSideInfos already exists")
@@ -46,7 +46,7 @@ class CisSideInfosRepository(private val CisSideInfosDao: CisSideInfosDao) {
     fun insertFromCsv(context: Context) {
         try {
             commonFonctionnality.insertCsvContentInBatches(context, 1000, "CIS_side_infos.csv") {
-                CisSideInfosDao.insertAll(*it.toTypedArray())
+                cisSideInfosDao.insertAll(*it.toTypedArray())
             }
         } catch (e: SQLiteConstraintException) {
             Log.e("CisSideInfosRepository", "CIS_side_infos already exists : ${e.message}")
@@ -78,7 +78,7 @@ class CisSideInfosRepository(private val CisSideInfosDao: CisSideInfosDao) {
             val values = commonFonctionnality.parseCsvLine(line)
             if (values.size == 3) {
                 val cisSideInfos = CisSideInfos(
-                    CodeCIS = values[0].toInt(),
+                    codeCIS = values[0].toInt(),
                     contreIndications = values[1],
                     allergies = values[2]
                 )
@@ -93,7 +93,7 @@ class CisSideInfosRepository(private val CisSideInfosDao: CisSideInfosDao) {
 
     fun deleteCisSideInfos(cisSideInfos: CisSideInfos): Pair<Boolean, String> {
         return try {
-            CisSideInfosDao.delete(cisSideInfos)
+            cisSideInfosDao.delete(cisSideInfos)
             Pair(true, "Success")
         } catch (e: SQLiteConstraintException) {
             Pair(false, "CisSideInfos doesn't exist")
@@ -106,7 +106,7 @@ class CisSideInfosRepository(private val CisSideInfosDao: CisSideInfosDao) {
 
     fun updateCisSideInfos(cisSideInfos: CisSideInfos): Pair<Boolean, String> {
         return try {
-            CisSideInfosDao.update(cisSideInfos)
+            cisSideInfosDao.update(cisSideInfos)
             Pair(true, "Success")
         } catch (e: SQLiteConstraintException) {
             Pair(false, "CisSideInfos doesn't exist")

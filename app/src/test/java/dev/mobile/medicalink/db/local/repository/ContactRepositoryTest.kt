@@ -2,19 +2,16 @@ package dev.mobile.medicalink.db.local.repository
 
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import dev.mobile.medicalink.db.local.AppDatabase
 import dev.mobile.medicalink.db.local.entity.Contact
-import org.junit.After
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 
 // NE FONCTIONNE PAS SUR LES PC DE L'IUT
 //NE FONCTIONNE PAS QUAND ON RUN AVEC LE COVERAGE (je sais pas pourquoi)
 //enlever les commentaires du @Config permet de retirer le warning de unknown chunk type 200
-@RunWith(AndroidJUnit4::class)
 //@Config(sdk = [29])
 //@SmallTest
 class ContactRepositoryTest {
@@ -51,7 +48,7 @@ class ContactRepositoryTest {
         )
 
 
-    @Before
+    @BeforeEach
     fun setupDatabase() {
         db = Room.inMemoryDatabaseBuilder(
             ApplicationProvider.getApplicationContext(),
@@ -61,7 +58,7 @@ class ContactRepositoryTest {
         contactRepository = ContactRepository(db.contactDao())
     }
 
-    @After
+    @AfterEach
     fun closeDatabase() {
         db.clearAllTables()
         db.close()
