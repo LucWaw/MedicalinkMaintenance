@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.tasks.UsesKotlinJavaToolchain
 
 plugins {
     id("com.android.application")
@@ -6,44 +7,49 @@ plugins {
     id("com.google.devtools.ksp")
 
 
-
     //Doc
-    id("org.jetbrains.dokka") version "1.9.10" apply false
+    id("org.jetbrains.dokka") version "1.9.0" apply false
 
 
 }
+
 android {
     namespace = "dev.mobile.medicalink"
 
     compileSdk = 34
 
+
+
+
+
+
     defaultConfig {
         applicationId = "dev.mobile.medicalink"
         minSdk = 23
-        targetSdk = 32
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+
     }
 
     buildTypes {
 
-        val apiRppsUrl = "\"${(project.properties["apiRppsUrl"] )}\""
+        val apiRppsUrl = "\"${(project.properties["apiRppsUrl"])}\""
         getByName("debug") {
             buildConfigField("String", "API_RPPS_URL", apiRppsUrl)
         }
         getByName("release") {
             buildConfigField("String", "API_RPPS_URL", apiRppsUrl)
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
+
+
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+
 
     packaging {
         resources.excludes.add("META-INF/DEPENDENCIES")
@@ -59,10 +65,21 @@ android {
     buildFeatures {
         buildConfig = true
     }
+
+
+}
+val service = project.extensions.getByType<JavaToolchainService>()
+val customLauncher = service.launcherFor {
+    languageVersion.set(JavaLanguageVersion.of(17))
+}
+project.tasks.withType<UsesKotlinJavaToolchain>().configureEach {
+    kotlinJavaToolchain.toolchain.use(customLauncher)
 }
 
 
 dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
 
     implementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("androidx.test:rules:1.5.0")
@@ -82,7 +99,7 @@ dependencies {
     implementation("androidx.biometric:biometric-ktx:1.2.0-alpha05")
 
     implementation("androidx.room:room-runtime:2.6.1")
-    ksp("androidx.room:room-compiler:2.5.2")
+    ksp("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
@@ -100,6 +117,9 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+}
+repositories {
+    google()
 }
 
 tasks.withType<Test>().configureEach {

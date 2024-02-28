@@ -12,7 +12,6 @@
         tools:ignore="QueryAllPackagesPermission" /><!-- TODO a enlever -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
-
     <application
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -72,9 +71,7 @@
             android:enabled="true"
             android:exported="false" />
 
-        <service
-            android:name=".utils.NotificationService"
-            android:exported="false" />
+
     </application>
 
 </manifest>

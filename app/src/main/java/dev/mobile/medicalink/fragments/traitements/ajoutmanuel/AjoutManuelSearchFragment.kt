@@ -249,7 +249,7 @@ class AjoutManuelSearchFragment : Fragment() {
      */
     private fun updateItems(query: String, traitement: Traitement) {
         Thread {
-            val itemList = CisBdpmDatabaseInterface.search100(query)
+            val itemList = CisBdpmDatabaseInterface.getAllCisBdpm()
             requireActivity().runOnUiThread {
                 itemAdapter = AjoutManuelSearchAdapterR(itemList) { clickedItem ->
                     updateSearchBar(
