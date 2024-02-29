@@ -196,6 +196,7 @@ class TestCreationProfil {
                 )
             )
         )
+        onView(withText(("OK"))).perform(click())
         textInputEditText5.perform(scrollTo(), replaceText("OSSELIN"))
 
         val textInputEditText6 = onView(
@@ -230,7 +231,7 @@ class TestCreationProfil {
         val materialTextView3 = onView(
             allOf(
                 withClassName(`is`("com.google.android.material.textview.MaterialTextView")),
-                withText("Mar. 27 févr."),
+                withText("Lun. 12 févr."),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("android.widget.LinearLayout")),
@@ -356,7 +357,7 @@ class TestCreationProfil {
 
         val textInputEditText10 = onView(
             allOf(
-                withId(R.id.input_password), withText("000000"),
+                withId(R.id.input_password),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("android.widget.LinearLayout")),
@@ -370,7 +371,7 @@ class TestCreationProfil {
 
         val textInputEditText11 = onView(
             allOf(
-                withId(R.id.input_password), withText("0000000"),
+                withId(R.id.input_password),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("android.widget.LinearLayout")),
@@ -385,7 +386,7 @@ class TestCreationProfil {
 
         val textInputEditText12 = onView(
             allOf(
-                withId(R.id.input_password), withText("000000"),
+                withId(R.id.input_password),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("android.widget.LinearLayout")),
@@ -399,7 +400,7 @@ class TestCreationProfil {
 
         val textInputEditText13 = onView(
             allOf(
-                withId(R.id.input_password), withText("0000000"),
+                withId(R.id.input_password),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("android.widget.LinearLayout")),

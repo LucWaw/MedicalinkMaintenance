@@ -2,7 +2,7 @@ name: Android emulator et Android Test
 on:
   push:
     branches:
-      - main
+      - testbaseandroid
   schedule:
     - cron: "0 20 * * *"
 

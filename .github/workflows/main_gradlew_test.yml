@@ -3,9 +3,9 @@ name: Run Tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [ testbaseandroid ]
   pull_request:
-    branches: [ main ]
+    branches: [ testbaseandroid ]
 
 jobs:
   build:
