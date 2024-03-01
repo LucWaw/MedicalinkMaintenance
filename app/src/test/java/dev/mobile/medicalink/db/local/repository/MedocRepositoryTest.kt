@@ -11,9 +11,10 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.robolectric.annotation.Config
 
 @RunWith(AndroidJUnit4::class)
-//@Config(sdk = [29])
+@Config(sdk = [29])
 //@SmallTest
 class MedocRepositoryTest {
     private lateinit var db: AppDatabase

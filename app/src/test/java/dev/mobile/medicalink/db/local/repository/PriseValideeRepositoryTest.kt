@@ -10,15 +10,15 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.robolectric.annotation.Config
 
 @RunWith(AndroidJUnit4::class)
-//@Config(sdk = [29])
+@Config(sdk = [29])
 //@SmallTest
 class PriseValideeRepositoryTest {
     private lateinit var db: AppDatabase
     private lateinit var priseValideeRepository: PriseValideeRepository
     private val defaultPriseValidee = PriseValidee("1", "2021-01-01", "1", "statut")
-    private val defaultPriseValidee2 = PriseValidee("2", "2021-02-02", "2", "statut2")
 
     @Before
     fun setupDatabase() {
