@@ -1,6 +1,5 @@
 package dev.mobile.medicalink.fragments.home
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
@@ -24,9 +23,7 @@ import dev.mobile.medicalink.db.local.repository.PriseValideeRepository
 import dev.mobile.medicalink.db.local.repository.UserRepository
 import dev.mobile.medicalink.fragments.traitements.Prise
 import dev.mobile.medicalink.fragments.traitements.SpacingRecyclerView
-import dev.mobile.medicalink.fragments.traitements.Traitement
-import dev.mobile.medicalink.fragments.traitements.ajoutmanuel.AjoutManuelDateSchemaPrise
-import dev.mobile.medicalink.fragments.traitements.ajoutmanuel.AjoutManuelRecapitulatif
+import dev.mobile.medicalink.fragments.traitements.builder.Traitement
 import java.time.LocalDate
 import java.time.Period
 import java.time.format.DateTimeFormatter

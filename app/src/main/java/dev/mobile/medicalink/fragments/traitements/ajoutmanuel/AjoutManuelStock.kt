@@ -22,7 +22,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import dev.mobile.medicalink.R
-import dev.mobile.medicalink.fragments.traitements.Traitement
+import dev.mobile.medicalink.fragments.traitements.builder.Traitement
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale

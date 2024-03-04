@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -28,14 +27,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputEditText
 import dev.mobile.medicalink.R
 import dev.mobile.medicalink.db.local.AppDatabase
-import dev.mobile.medicalink.db.local.dao.CisBdpmDao
 import dev.mobile.medicalink.db.local.entity.CisBdpm
 import dev.mobile.medicalink.db.local.repository.CisBdpmRepository
 import dev.mobile.medicalink.fragments.traitements.AddTraitementsFragment
 import dev.mobile.medicalink.fragments.traitements.SpacingRecyclerView
-import dev.mobile.medicalink.fragments.traitements.Traitement
-import java.util.concurrent.LinkedBlockingQueue
-import kotlin.concurrent.thread
+import dev.mobile.medicalink.fragments.traitements.builder.Traitement
 
 
 class AjoutManuelSearchFragment : Fragment() {

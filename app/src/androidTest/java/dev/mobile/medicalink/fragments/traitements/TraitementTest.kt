@@ -4,11 +4,10 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import dev.mobile.medicalink.fragments.traitements.PriseTest.Companion.dummyPrise1
 import dev.mobile.medicalink.fragments.traitements.PriseTest.Companion.dummyPrise2
+import dev.mobile.medicalink.fragments.traitements.builder.Traitement
 import junit.framework.TestCase.assertEquals
 import org.junit.Test
-import java.io.Serializable
 import java.time.LocalDate
-import java.util.*
 
 @RequiresApi(Build.VERSION_CODES.O)
 class TraitementTest {

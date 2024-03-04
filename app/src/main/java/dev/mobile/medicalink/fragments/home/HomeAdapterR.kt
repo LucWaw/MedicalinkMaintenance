@@ -22,7 +22,7 @@ import dev.mobile.medicalink.db.local.entity.PriseValidee
 import dev.mobile.medicalink.db.local.repository.MedocRepository
 import dev.mobile.medicalink.db.local.repository.PriseValideeRepository
 import dev.mobile.medicalink.fragments.traitements.Prise
-import dev.mobile.medicalink.fragments.traitements.Traitement
+import dev.mobile.medicalink.fragments.traitements.builder.Traitement
 import dev.mobile.medicalink.utils.NotificationService
 import java.time.LocalDate
 import java.time.LocalTime
@@ -52,7 +52,7 @@ class HomeAdapterR(
     private val callback: RapportJourCallback,
     parentRecyclerView: RecyclerView,
 
-) : RecyclerView.Adapter<HomeAdapterR.AjoutManuelViewHolder>(), CircleStateCallback {
+    ) : RecyclerView.Adapter<HomeAdapterR.AjoutManuelViewHolder>(), CircleStateCallback {
     private val VIEW_TYPE_EMPTY: Int = 0
     private val VIEW_TYPE_NORMAL: Int = 1
 

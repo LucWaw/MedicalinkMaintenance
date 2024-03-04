@@ -19,6 +19,7 @@ import dev.mobile.medicalink.db.local.entity.Medoc
 import dev.mobile.medicalink.db.local.repository.MedocRepository
 import dev.mobile.medicalink.db.local.repository.UserRepository
 import dev.mobile.medicalink.fragments.traitements.ajoutmanuel.AjoutManuelRecapitulatif
+import dev.mobile.medicalink.fragments.traitements.builder.Traitement
 import dev.mobile.medicalink.utils.NotificationService
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
