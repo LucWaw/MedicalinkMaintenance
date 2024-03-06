@@ -1,12 +1,9 @@
-package dev.mobile.medicalink.fragments.traitements
+package dev.mobile.medicalink.fragments.traitements.builderTreatment
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import java.io.Serializable
-import java.util.*
+import java.util.Locale
 
-@RequiresApi(Build.VERSION_CODES.O)
-class Prise(
+class Sample(
     var numeroPrise: String,
     var heurePrise: String,
     var quantite: Int,
@@ -24,5 +21,7 @@ class Prise(
     override fun toString(): String {
         return "$numeroPrise;$heurePrise;$quantite;$dosageUnite"
     }
+
+
 
 }

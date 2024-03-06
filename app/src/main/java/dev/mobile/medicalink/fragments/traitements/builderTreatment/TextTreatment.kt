@@ -1,4 +1,5 @@
 package dev.mobile.medicalink.fragments.traitements.builderTreatment
 
-class TextTreatment : Treatment() {
-}
+class TextTreatment(nomTraitement: String, typeComprime: String, timeline: Timeline) : Treatment(nomTraitement,
+    typeComprime, timeline
+)

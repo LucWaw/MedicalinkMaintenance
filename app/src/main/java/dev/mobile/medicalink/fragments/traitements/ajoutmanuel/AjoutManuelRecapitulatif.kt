@@ -234,7 +234,8 @@ class AjoutManuelRecapitulatif : Fragment() {
                                         substanceAdd,
                                         bundle,
                                         "Est incompatible avec : ",
-                                        "Interactions Détectées"
+                                        "Interactions Détectées",
+                                        true
                                     )
                                 }
                             }

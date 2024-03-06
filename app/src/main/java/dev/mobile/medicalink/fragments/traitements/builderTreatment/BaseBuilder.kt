@@ -1,9 +1,8 @@
 package dev.mobile.medicalink.fragments.traitements.builderTreatment
 
 abstract class BaseBuilder : Builder {
-    protected var treatment: Treatment = Treatment()
+    protected abstract var treatment: Treatment
 
-    fun build(): Treatment {
-        return treatment
-    }
+
+
 }
