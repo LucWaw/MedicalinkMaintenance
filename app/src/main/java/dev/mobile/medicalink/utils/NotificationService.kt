@@ -12,7 +12,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import dev.mobile.medicalink.R
-import dev.mobile.medicalink.fragments.traitements.builder.Traitement
+import dev.mobile.medicalink.fragments.traitements.Traitement
 import java.lang.System.currentTimeMillis
 import java.time.Duration
 import java.time.LocalDate

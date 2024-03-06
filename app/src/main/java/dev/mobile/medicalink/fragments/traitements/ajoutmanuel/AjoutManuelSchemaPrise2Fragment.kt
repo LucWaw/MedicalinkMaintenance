@@ -19,7 +19,7 @@ import com.google.android.material.textfield.TextInputEditText
 import dev.mobile.medicalink.R
 import dev.mobile.medicalink.fragments.traitements.Prise
 import dev.mobile.medicalink.fragments.traitements.SpacingRecyclerView
-import dev.mobile.medicalink.fragments.traitements.builder.Traitement
+import dev.mobile.medicalink.fragments.traitements.Traitement
 import java.util.UUID
 
 

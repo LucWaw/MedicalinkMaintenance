@@ -17,7 +17,7 @@ import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import dev.mobile.medicalink.R
-import dev.mobile.medicalink.fragments.traitements.builder.Traitement
+import dev.mobile.medicalink.fragments.traitements.Traitement
 
 
 class AjoutManuelSchemaPriseFragment : Fragment() {

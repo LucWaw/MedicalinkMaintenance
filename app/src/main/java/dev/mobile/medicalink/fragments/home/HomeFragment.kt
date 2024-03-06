@@ -23,7 +23,7 @@ import dev.mobile.medicalink.db.local.repository.PriseValideeRepository
 import dev.mobile.medicalink.db.local.repository.UserRepository
 import dev.mobile.medicalink.fragments.traitements.Prise
 import dev.mobile.medicalink.fragments.traitements.SpacingRecyclerView
-import dev.mobile.medicalink.fragments.traitements.builder.Traitement
+import dev.mobile.medicalink.fragments.traitements.Traitement
 import java.time.LocalDate
 import java.time.Period
 import java.time.format.DateTimeFormatter

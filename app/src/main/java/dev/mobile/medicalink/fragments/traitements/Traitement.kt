@@ -1,20 +1,19 @@
-package dev.mobile.medicalink.fragments.traitements.builder
+package dev.mobile.medicalink.fragments.traitements
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import dev.mobile.medicalink.fragments.traitements.Prise
 import java.io.Serializable
 import java.time.LocalDate
 import java.util.*
 
 @RequiresApi(Build.VERSION_CODES.O)
 class Traitement(
-    var CodeCIS: Int?,
+    var CodeCIS: Int?,                        //base
     var nomTraitement: String,
     var dosageNb: Int,
     var dosageUnite: String,
-    var dateFinTraitement: LocalDate?,
-    var typeComprime: String = "Comprimé",
+    var dateFinTraitement: LocalDate?,         //Page Shéma de prise de Traitement
+    var typeComprime: String = "Comprimé",     //Page type
     var comprimesRestants: Int?,
     var expire: Boolean = false,
     var effetsSecondaires: MutableList<String>?,

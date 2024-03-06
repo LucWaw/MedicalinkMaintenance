@@ -1,0 +1,34 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam backgroundcolor white
+skinparam groupInheritance 2
+top to bottom direction
+
+package builderTreatment{
+    interface Builder
+    abstract class BaseBuilder
+    class SubstanceBuilder
+    class Treatment
+    class TextBuilder
+    class Director
+    class TextTreatment
+    class SubstanceTreatment
+}
+
+class Client
+
+Client ..> Director
+Client ..> SubstanceBuilder
+Client ..> TextBuilder
+Builder <|-- BaseBuilder
+BaseBuilder <|-- SubstanceBuilder
+BaseBuilder <|-- TextBuilder
+BaseBuilder ..> Treatment
+BaseBuilder --> Treatment : #treatment \n1
+Director ..> Builder
+SubstanceBuilder ..> SubstanceTreatment
+TextBuilder ..> TextTreatment
+SubstanceTreatment --|> Treatment
+TextTreatment --|> Treatment
+
+@enduml

@@ -14,7 +14,6 @@ import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import dev.mobile.medicalink.R
-import dev.mobile.medicalink.fragments.traitements.builder.Traitement
 import java.time.LocalDate
 
 

@@ -32,7 +32,7 @@ import dev.mobile.medicalink.fragments.traitements.ListeTraitementsFragment
 import dev.mobile.medicalink.fragments.traitements.Prise
 import dev.mobile.medicalink.fragments.traitements.RecapAdapterR
 import dev.mobile.medicalink.fragments.traitements.SpacingRecyclerView
-import dev.mobile.medicalink.fragments.traitements.builder.Traitement
+import dev.mobile.medicalink.fragments.traitements.Traitement
 import java.text.Normalizer
 
 

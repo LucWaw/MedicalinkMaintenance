@@ -4,7 +4,6 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import dev.mobile.medicalink.fragments.traitements.PriseTest.Companion.dummyPrise1
 import dev.mobile.medicalink.fragments.traitements.PriseTest.Companion.dummyPrise2
-import dev.mobile.medicalink.fragments.traitements.builder.Traitement
 import junit.framework.TestCase.assertEquals
 import org.junit.Test
 import java.time.LocalDate

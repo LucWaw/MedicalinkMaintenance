@@ -19,7 +19,6 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import dev.mobile.medicalink.R
 import dev.mobile.medicalink.fragments.traitements.ajoutmanuel.AjoutManuelSearchFragment
-import dev.mobile.medicalink.fragments.traitements.builder.Traitement
 import java.io.File
 import java.text.SimpleDateFormat
 import java.time.LocalDate
